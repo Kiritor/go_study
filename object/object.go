@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+
 //Integer
 type Integer int
 
