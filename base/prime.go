@@ -7,6 +7,7 @@ package main
 
 import (
    "fmt"
+   "time"
 )
 
 /**
@@ -37,10 +38,10 @@ func isPrime2(num int64) bool {
    if num == 2 {
       return true
    }
-   for i:=int64(3);i<num;i++ {
-	  if num%2 == 0 {
+   if num%2 == 0 {
 	     return false
-	  }
+   }
+   for i:=int64(3);i<num;i+=2 {
       if num%i== 0 {
 		 return false
 	  }
@@ -102,10 +103,17 @@ func isPrime3(num int64) bool {
    return true
 }
 func main(){
-    var N int64 = 1000000000
+    var N int64 = 100000000
+	var count int64 = 0
+	var sum int64 = 0
+	t1 := time.Now()
     for i:=int64(1);i<=N;i++ {
-      if isPrime2(int64(i)) {
+      if isPrime3(int64(i)) {
+		  count+=1
+		  sum +=i
           fmt.Println(i)
       }
     }
+	fmt.Println(time.Now().Sub(t1))
+	fmt.Println(sum)
 }
