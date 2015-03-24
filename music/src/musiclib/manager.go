@@ -55,3 +55,24 @@ func (m *MusicManager) Find(name string) {
 func (m *MusicManager) Add(music *Music) {
 	m.musics = append(m.musics,*music)
 }
+
+/**
+   删除歌曲
+*/
+
+func (m *MusicManager) Remove(index int) *Music {
+	if index< 0 || index >=len(m.musics) {
+		return nil
+	}
+	removeMusic :=&m.musics[index]
+	if index<len(m.musics) -1 {
+		//删除中间元素
+		m.musics = append(m.musics[:index-1],m.musics[index+1:]...)
+	}else if index==0 {
+		//删除唯一一个元素(清空音乐库)，能够执行到这一步意味着只有一个元素
+		m.musics = make([]Music,0)
+	}else {
+		m.musics=m.musics[:index-1]
+	}
+	return removeMusic
+}
