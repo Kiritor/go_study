@@ -3,7 +3,6 @@ package musiclib
 import (
     "errors"
 )
-df
 type MusicManager struct {
 	musics []Music
 }
@@ -26,7 +25,7 @@ func (m *MusicManager) Len() int {
    根据索引得到音乐
 */
 
-func (m *MusicManager) Get(index int) {
+func (m *MusicManager) Get(index int) (music *Music,err error){
 	if index <0 ||index>=len(m.musics) {
 		return nil,errors.New("索引越界")
 	}
@@ -37,11 +36,11 @@ func (m *MusicManager) Get(index int) {
    根据歌名获取歌曲
 */
 
-func (m *MusicManager) Find(name string) {
+func (m *MusicManager) Find(name string) (music *Music) {
 	if len(m.musics) == 0 {
 		return nil
 	}
-	for _,m:range m.musics {
+	for _,m:=range m.musics {
 		if m.Name == name {
 			return &m
 		}
