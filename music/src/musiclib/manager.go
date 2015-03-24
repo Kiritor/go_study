@@ -75,3 +75,16 @@ func (m *MusicManager) Remove(index int) *Music {
 	}
 	return removeMusic
 }
+
+func (m *MusicManager) RemoveByName(name string) *Music {
+    if len(m.musics) == 0 {
+        return nil
+    }
+
+    for i, v := range m.musics {
+        if v.Name == name {
+            return m.Remove(i)
+        }
+    }
+    return nil
+}
