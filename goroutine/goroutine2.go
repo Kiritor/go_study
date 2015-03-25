@@ -38,4 +38,7 @@ func main() {
 			 fmt.Println("现在还小于等于10呢")
 		 }
 	 }
+	fmt.Println("GOVERSION:",runtime.Version())
+	fmt.Println("GOROOT:",runtime.GOROOT())     //打印GOROOT环境目录，否则返回创建时的根目录
+	fmt.Println("LogicCPUNum:",runtime.NumCPU())
 }
