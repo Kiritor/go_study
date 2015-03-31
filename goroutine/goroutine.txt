@@ -16,4 +16,15 @@ GO语言并发通信:channel
     
 	 channel是go语言在语言级别提供的goroutine间的通信方式(进程间的通信方式)
 	 
-	 缓冲机制:即使没有读取放,写入放也可以一直写入,在缓冲区被填完之前都不会阻塞
+  缓冲机制:即使没有读取放,写入放也可以一直写入,在缓冲区被填完之前都不会阻塞
+  
+  超时机制:使用select实现超时机制避免死锁
+  
+  单向channel
+     var chann = make(chan int)
+     var chan1 chan<- int(chann)   //单向写
+	 var chan2 <-chan int(chann)   //单向读
+  
+  关闭channel
+      close(ch)
+	  x,ok :=<-ch //ok为false即为关闭状态
